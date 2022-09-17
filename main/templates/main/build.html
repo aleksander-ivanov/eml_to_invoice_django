@@ -1,0 +1,20 @@
+{% extends "main/base.html" %}
+
+{% block page_content %}
+    <div>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="file" class="form-label">Choose *.eml file to build PDF invoices</label>
+                <input class="form-control form-control-lg" id="file" type="file" name="file" accept="message/rfc822">
+            </div>
+            <div class="mb-3">
+                <label for="invoice-num" class="form-label">Invoice serial number</label>
+                <input type="number" class="form-control" id="invoice-num" name="invoice-number" aria-describedby="invoice-help">
+                <div id="invoice-help" class="form-text">Specify the serial number of the invoice that will be displayed on the document.</div>
+            </div>
+            <button type="submit" class="btn btn-primary">Build PDF invoices</button>
+        </form>
+    </div>
+
+{% endblock %}
